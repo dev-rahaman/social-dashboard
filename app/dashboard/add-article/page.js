@@ -4,12 +4,12 @@ import React, { useState, useRef } from "react";
 import JoditEditor from "jodit-react";
 import { Button } from "@/app/components/SmallComponets";
 
-export const TextInput = ({ labelTitle, paragraph, name }) => {
+export const TextInput = ({ htmlFor, id, labelTitle, paragraph, name }) => {
   return (
     <div className="bg-gray-200 p-5 rounded w-[900px]">
-      <label htmlFor="title">{labelTitle}</label>
+      <label htmlFor={htmlFor}>{labelTitle}</label>
       <span className="block">{paragraph}</span>
-      <input type="text" id="title" name={name} required className="w-full" />
+      <input type="text" id={id} name={name} required className="w-full" />
     </div>
   );
 };
@@ -22,10 +22,34 @@ const AddBlog = () => {
     disablePlugins: ["POWERED BY JODIT"],
   };
 
+  const handleArticle = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const title = form.title.value;
+    const content = form.content.value;
+    const tags = form.tags.value;
+
+    const newArticle = { title, content, tags };
+
+    fetch("http://localhost:3001/add-article", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newArticle),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
   return (
-    <form className="flex flex-col gap-y-5">
+    <form onSubmit={handleArticle} className="flex flex-col gap-y-5">
       <TextInput
         labelTitle={"Title"}
+        htmlFor={"title"}
+        id={"title"}
         paragraph={
           " Introduce the problem and expand on what you put in the title. Minimum 20 characters."
         }
@@ -51,14 +75,15 @@ const AddBlog = () => {
 
       <TextInput
         labelTitle={"Tag"}
+        htmlFor={"tags"}
+        id={"tags"}
         paragraph={"Minimum 5 tags is required"}
         name={"tags"}
       />
 
       <div className="flex justify-end">
-        <Button buttonText={"Post Now"} />
+        <Button type={"submit"} buttonText={"Post Now"} />
       </div>
-      {content}
     </form>
   );
 };

@@ -37,37 +37,47 @@ export const Item = ({ menu, link, icon }) => {
 
 const items = [
   {
-    name: "ইডিট প্রোফাইল",
+    name: "Edit Profile",
     href: "/",
     icon: <EditIcon />,
   },
   {
-    name: "ব্লগ যুগ করুন",
+    name: "Registration",
+    href: "/dashboard/authorization/registration",
+    icon: <EditIcon />,
+  },
+  {
+    name: "Login",
+    href: "/dashboard/authorization/login",
+    icon: <EditIcon />,
+  },
+  {
+    name: "Post A Article",
     href: "/dashboard/add-blog",
     icon: <DashboardIcon />,
   },
   {
-    name: "নোটিশঃ পাবলিশ করুন",
+    name: "Publish a Notice",
     href: "/dashboard/notice",
     // icon: <NotchIcon />,
   },
-  { name: "ক্লাস পোস্ট করুন", href: "/dashboard/class", icon: <ClassIcon /> },
-  { name: "ইভেন্ট যুগ করুন", href: "/dashboard/event", icon: <EventIcon /> },
-  { name: "ভিডিও শেয়ার করুন", href: "/dashboard/video", icon: <VideoIcon /> },
-  { name: "ফটো শেয়ার করুন", href: "/dashboard/photo", icon: <PhotoIcon /> },
+  { name: "Post a Class", href: "/dashboard/class", icon: <ClassIcon /> },
+  { name: "Post a Event", href: "/dashboard/event", icon: <EventIcon /> },
+  { name: "Post a Video", href: "/dashboard/video", icon: <VideoIcon /> },
+  { name: "Post a Photo", href: "/dashboard/photo", icon: <PhotoIcon /> },
   {
-    name: "ডোনেশন ইনফরমেশন",
+    name: "Donation Now",
     href: "/dashboard/donation",
     icon: <DonationIcon />,
   },
-  { name: "গ্রুপ ", href: "/dashboard/group", icon: <GroupIcon /> },
-  { name: "মেসেজ", href: "/dashboard/message", icon: <MessageIcon /> },
+  { name: "Group", href: "/dashboard/group", icon: <GroupIcon /> },
+  { name: "Message", href: "/dashboard/message", icon: <MessageIcon /> },
   {
-    name: "নোটিফিকেশন",
+    name: "Notification",
     href: "/dashboard/notification",
     icon: <NotificationIcon />,
   },
-  { name: "ফিডব্যাক", href: "/dashboard/feedback", icon: <FeedbackIcon /> },
+  { name: "Feedback", href: "/dashboard/feedback", icon: <FeedbackIcon /> },
 ];
 
 const dropdown = [

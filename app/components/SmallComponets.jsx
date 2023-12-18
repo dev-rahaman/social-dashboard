@@ -14,10 +14,10 @@ export const Title = ({ heading, headingStyle, headingStyle2, paragraph }) => {
   );
 };
 
-export const Button = ({ buttonText, buttonHandler }) => {
+export const Button = ({ type, buttonText, buttonHandler }) => {
   return (
     <button
-      type="submit"
+      type={type}
       onClick={buttonHandler}
       className="font-bold bg-[#0e6c14] hover:bg-[#9bb200] hover:text-[#0e6c14] text-white rounded-3xl w-[120px] p-2"
     >
