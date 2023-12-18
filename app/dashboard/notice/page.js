@@ -1,24 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import JoditEditor from "jodit-react";
-import { Button } from "@/app/components/SmallComponets";
-
-export const TextInput = ({
-  labelName,
-  labelTitle,
-  paragraph,
-  name,
-  inputId,
-  type,
-}) => {
-  return (
-    <div className="bg-gray-200 p-5 rounded w-[900px]">
-      <label htmlFor={labelName}>{labelTitle}</label>
-      <span className="block">{paragraph}</span>
-      <input type={type} id={inputId} name={name} required className="w-full" />
-    </div>
-  );
-};
+import { Button, TextInput } from "@/app/components/SmallComponents";
 
 const Notice = () => {
   const editor = useRef(null);
@@ -28,21 +11,55 @@ const Notice = () => {
     disablePlugins: ["POWERED BY JODIT"],
   };
 
+  const handleNotice = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const title = form.title.value;
+    const content = form.content.value;
+    const principalName = form.principalName.value;
+    const schoolPlace = form.schoolPlace.value;
+    const schoolSeal = form.schoolSeal.value;
+    const noticeDate = form.noticeDate.value;
+    const tags = form.tags.value;
+
+    const newNotice = {
+      title,
+      content,
+      principalName,
+      schoolSeal,
+      schoolPlace,
+      noticeDate,
+      tags,
+    };
+
+    fetch("http://localhost:3001/add-notice", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newNotice),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
   return (
-    <div className="flex flex-col gap-y-5">
+    <form onSubmit={handleNotice} className="flex flex-col gap-y-5">
       <TextInput
         type={"text"}
-        labelTitle={"Notice Title"}
-        labelName={"Notice"}
-        inputId={"Notice"}
+        htmlFor={"title"}
+        id={"title"}
+        labelTitle={"title"}
+        name={"title"}
         paragraph={
           " Introduce the problem and expand on what you put in the title. Minimum 20 characters."
         }
-        name={"title"}
       />
 
       <div className="bg-gray-200 p-5 rounded w-[900px]">
-        <label htmlFor="title">Content</label>
+        <label htmlFor="Content">Content</label>
         <span className="block">
           Introduce the problem and expand on what you put in the title. Minimum
           20 characters.
@@ -54,61 +71,62 @@ const Notice = () => {
           config={joditConfig}
           onBlur={(newContent) => setContent(newContent)}
           onChange={(newContent) => {}}
+          name={"content"}
         />
       </div>
 
       <TextInput
         type={"text"}
-        labelTitle={"Tag"}
-        labelName={"Tag"}
-        inputId={"Tag"}
-        paragraph={"Minimum 5 tags is required"}
-        name={"tag"}
+        htmlFor={"principalName"}
+        id={"principalName"}
+        labelTitle={"principal Name"}
+        name={"principalName"}
+        paragraph={"Enter Principal's Name here."}
       />
       <TextInput
         type={"text"}
-        labelTitle={"Date"}
-        labelName={"Date"}
-        inputId={"Date"}
-        paragraph={"এখানে আজকের ডেট লিখুন।"}
-        name={"tag"}
-      />
-      <TextInput
-        type={"text"}
-        labelTitle={"principal"}
-        labelName={"principal"}
-        inputId={"principal"}
-        paragraph={"এখানে অধ্যক্ষের অধ্যক্ষের নাম ডেট লিখুন।"}
-        name={"tag"}
-      />
-      <TextInput
-        type={"text"}
-        labelTitle={"মাদ্রাসা নাম"}
-        labelName={"madrasaName"}
-        inputId={"madrasaName"}
-        paragraph={"এখানে মাদ্রাসার নাম লিখুন।"}
-        name={"tag"}
+        htmlFor={"schoolPlace"}
+        id={"schoolPlace"}
+        labelTitle={"school Place"}
+        name={"schoolPlace"}
+        paragraph={"Enter school Place here."}
       />
       <TextInput
         type={"file"}
-        labelTitle={"মাদ্রাসা সীল"}
-        labelName={"sill"}
-        inputId={"sill"}
-        paragraph={"এখানে মাদ্রাসার সীল দিন"}
-        name={"tag"}
+        htmlFor={"schoolSeal"}
+        id={"schoolSeal"}
+        labelTitle={"school Seal"}
+        name={"schoolSeal"}
+        paragraph={"Enter School Seal here."}
       />
       <TextInput
         type={"text"}
-        labelTitle={"মাদ্রাসার স্থান"}
-        labelName={"place"}
-        inputId={"place"}
-        paragraph={"এখানে মাদ্রাসার স্থান লিখুন।"}
-        name={"tag"}
+        htmlFor={"schoolPlace"}
+        id={"schoolPlace"}
+        labelTitle={"school Place"}
+        name={"schoolPlace"}
+        paragraph={"Enter School Place here."}
+      />
+      <TextInput
+        type={"date"}
+        htmlFor={"noticeDate"}
+        id={"noticeDate"}
+        labelTitle={"notice Date"}
+        name={"noticeDate"}
+        paragraph={"Minimum 5 tags is required"}
+      />
+      <TextInput
+        type={"text"}
+        htmlFor={"tags"}
+        id={"tags"}
+        labelTitle={"tags"}
+        name={"tags"}
+        paragraph={"Minimum 5 tags is required"}
       />
       <div className="flex justify-end">
-        <Button buttonText={"Post Now"} />
+        <Button type={"submit"} buttonText={"Post Now"} />
       </div>
-    </div>
+    </form>
   );
 };
 

@@ -1,27 +1,51 @@
+"use client";
 import React from "react";
-import { Input } from "../video/page";
-import { Button } from "@/app/components/SmallComponets";
+import { Button, TextInput } from "@/app/components/SmallComponents";
 
 const Class = () => {
+  const handleEvent = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const selectVideo = form.selectVideo.value;
+    const writeTittle = form.writeTittle.value;
+    const description = form.description.value;
+    const thumbnail = form.thumbnail.value;
+    const tags = form.tags.value;
+
+    const newClass = { selectVideo, writeTittle, description, thumbnail, tags };
+
+    fetch("http://localhost:3001/add-event", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newClass),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
   return (
-    <div className="flex flex-col gap-y-5">
+    <form onSubmit={handleEvent} className="flex flex-col gap-y-5">
       {/* video */}
-      <Input
+      <TextInput
         type={"file"}
-        inputId={"video"}
-        name={"video"}
-        labelName={"video"}
-        labelTitle={"ইভেন্ট"}
+        htmlFor={"selectVideo"}
+        id={"selectVideo"}
+        labelTitle={"select Video"}
+        name={"selectVideo"}
         paragraph={"একটি ইভেন্ট ভিডিও সিলেক্ট করুন"}
       />
 
       {/* title  */}
-      <Input
+      <TextInput
         type={"text"}
-        name={"video title"}
-        inputId={"videotitle"}
-        labelName={"videotitle"}
-        labelTitle={"ইভেন্ট টাইটেল"}
+        htmlFor={"writeTittle"}
+        id={"writeTittle"}
+        labelTitle={"writeTittle"}
+        name={"writeTittle"}
         paragraph={"একটি ইভেন্ট টাইটেল লিখুন"}
       />
 
@@ -39,15 +63,22 @@ const Class = () => {
       </div>
 
       {/* video */}
-      <Input
+      <TextInput
         type={"file"}
-        inputId={"Thumbnail"}
-        name={"Thumbnail"}
-        labelName={"Thumbnail"}
-        labelTitle={"থাম্বনেইল"}
+        htmlFor={"thumbnail"}
+        id={"thumbnail"}
+        labelTitle={"thumbnail"}
+        name={"thumbnail"}
         paragraph={"একটি ইভেন্ট থাম্বনেইল সিলেক্ট করুন"}
       />
-
+      <TextInput
+        type={"text"}
+        htmlFor={"tags"}
+        id={"tags"}
+        labelTitle={"Tag"}
+        name={"tags"}
+        paragraph={"Minimum 5 tags is required"}
+      />
       {/* playlist */}
       <select>
         <option>Select a playlist</option>
@@ -58,9 +89,9 @@ const Class = () => {
         <option>name5</option>
       </select>
       <div className="flex justify-end">
-        <Button buttonText={"Post Now"} />
+        <Button type={"submit"} buttonText={"Post Now"} />
       </div>
-    </div>
+    </form>
   );
 };
 

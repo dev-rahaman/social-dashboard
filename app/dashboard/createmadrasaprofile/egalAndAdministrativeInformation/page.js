@@ -1,5 +1,8 @@
 "use client";
-import { TextInput, TextInputWithLabel } from "@/app/components/SmallComponets";
+import {
+  TextInput,
+  TextInputWithLabel,
+} from "@/app/components/SmallComponents";
 import { Label, Textarea } from "flowbite-react";
 import { useEffect } from "react";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Input } from "../video/page";
-import { Button } from "@/app/components/SmallComponets";
+import { Button } from "@/app/components/SmallComponents";
 
 const DonationInformation = () => {
   return (

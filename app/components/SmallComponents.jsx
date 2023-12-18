@@ -68,3 +68,22 @@ export const TextInputWithLabel = ({ label, placeholder, id, htmlFor }) => {
     </div>
   );
 };
+
+export const TextInput = ({
+  htmlFor,
+  id,
+  labelTitle,
+  paragraph,
+  name,
+  type,
+}) => {
+  return (
+    <div className="bg-gray-200 p-5 rounded w-[900px]">
+      <label htmlFor={htmlFor} className="capitalize">
+        {labelTitle}
+      </label>
+      <span className="block">{paragraph}</span>
+      <input type={type} id={id} name={name} required className="w-full" />
+    </div>
+  );
+};

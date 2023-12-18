@@ -53,7 +53,7 @@ const items = [
   },
   {
     name: "Post A Article",
-    href: "/dashboard/add-blog",
+    href: "/dashboard/add-article",
     icon: <DashboardIcon />,
   },
   {
@@ -65,11 +65,11 @@ const items = [
   { name: "Post a Event", href: "/dashboard/event", icon: <EventIcon /> },
   { name: "Post a Video", href: "/dashboard/video", icon: <VideoIcon /> },
   { name: "Post a Photo", href: "/dashboard/photo", icon: <PhotoIcon /> },
-  {
-    name: "Donation Now",
-    href: "/dashboard/donation",
-    icon: <DonationIcon />,
-  },
+  // {
+  //   name: "Donation Now",
+  //   href: "/dashboard/donation",
+  //   icon: <DonationIcon />,
+  // },
   { name: "Group", href: "/dashboard/group", icon: <GroupIcon /> },
   { name: "Message", href: "/dashboard/message", icon: <MessageIcon /> },
   {

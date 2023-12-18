@@ -1,6 +1,9 @@
 "use client";
 import { AuthContext } from "@/app/Provider/AuthProvider";
-import { TextInput, TextInputWithLabel } from "@/app/components/SmallComponets";
+import {
+  TextInput,
+  TextInputWithLabel,
+} from "@/app/components/SmallComponents";
 import { Label } from "flowbite-react";
 import { useContext, useEffect } from "react";
 

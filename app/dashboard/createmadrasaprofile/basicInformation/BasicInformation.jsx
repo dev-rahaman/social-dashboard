@@ -1,4 +1,4 @@
-import { TextInputWithLabel } from "@/app/components/SmallComponets";
+import { TextInputWithLabel } from "@/app/components/SmallComponents";
 
 const BasicInformation = () => {
   return (

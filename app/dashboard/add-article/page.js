@@ -1,18 +1,7 @@
 "use client";
-
 import React, { useState, useRef } from "react";
 import JoditEditor from "jodit-react";
-import { Button } from "@/app/components/SmallComponets";
-
-export const TextInput = ({ htmlFor, id, labelTitle, paragraph, name }) => {
-  return (
-    <div className="bg-gray-200 p-5 rounded w-[900px]">
-      <label htmlFor={htmlFor}>{labelTitle}</label>
-      <span className="block">{paragraph}</span>
-      <input type="text" id={id} name={name} required className="w-full" />
-    </div>
-  );
-};
+import { Button, TextInput } from "@/app/components/SmallComponents";
 
 const AddBlog = () => {
   const editor = useRef(null);
@@ -47,9 +36,10 @@ const AddBlog = () => {
   return (
     <form onSubmit={handleArticle} className="flex flex-col gap-y-5">
       <TextInput
-        labelTitle={"Title"}
+        type={"text"}
         htmlFor={"title"}
         id={"title"}
+        labelTitle={"Title"}
         paragraph={
           " Introduce the problem and expand on what you put in the title. Minimum 20 characters."
         }
@@ -57,7 +47,7 @@ const AddBlog = () => {
       />
 
       <div className="bg-gray-200 p-5 rounded w-[900px]">
-        <label htmlFor="title">Content</label>
+        <label htmlFor="Content">Content</label>
         <span className="block">
           Introduce the problem and expand on what you put in the title. Minimum
           20 characters.
@@ -74,11 +64,12 @@ const AddBlog = () => {
       </div>
 
       <TextInput
-        labelTitle={"Tag"}
+        type={"text"}
         htmlFor={"tags"}
         id={"tags"}
-        paragraph={"Minimum 5 tags is required"}
+        labelTitle={"Tag"}
         name={"tags"}
+        paragraph={"Minimum 5 tags is required"}
       />
 
       <div className="flex justify-end">
