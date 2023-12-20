@@ -1,15 +1,9 @@
 "use client";
 import React, { useState, useRef } from "react";
-import JoditEditor from "jodit-react";
 import { Button, TextInput } from "@/app/components/SmallComponents";
 
 const Notice = () => {
-  const editor = useRef(null);
   const [content, setContent] = useState("");
-
-  const joditConfig = {
-    disablePlugins: ["POWERED BY JODIT"],
-  };
 
   const handleNotice = (e) => {
     e.preventDefault();
@@ -64,15 +58,6 @@ const Notice = () => {
           Introduce the problem and expand on what you put in the title. Minimum
           20 characters.
         </span>
-        <JoditEditor
-          ref={editor}
-          value={content}
-          tabIndex={1}
-          config={joditConfig}
-          onBlur={(newContent) => setContent(newContent)}
-          onChange={(newContent) => {}}
-          name={"content"}
-        />
       </div>
 
       <TextInput

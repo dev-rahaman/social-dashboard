@@ -1,26 +1,22 @@
 "use client";
-import React, { useState, useRef } from "react";
-import JoditEditor from "jodit-react";
 import { Button, TextInput } from "@/app/components/SmallComponents";
+import TextEditor from "@/app/components/TextEditor";
+import "quill/dist/quill.snow.css";
+import { useState } from "react";
 
 const AddBlog = () => {
-  const editor = useRef(null);
-  const [content, setContent] = useState("");
-
-  const joditConfig = {
-    disablePlugins: ["POWERED BY JODIT"],
-  };
+  const [value, setValue] = useState();
 
   const handleArticle = (e) => {
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
-    const content = form.content.value;
+    const photo = form.photo.value;
     const tags = form.tags.value;
 
-    const newArticle = { title, content, tags };
+    const newArticle = { title, photo, value, tags };
 
-    fetch("http://localhost:3001/add-article", {
+    fetch("http://localhost:3001/article", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,22 +42,15 @@ const AddBlog = () => {
         name={"title"}
       />
 
-      <div className="bg-gray-200 p-5 rounded w-[900px]">
-        <label htmlFor="Content">Content</label>
-        <span className="block">
-          Introduce the problem and expand on what you put in the title. Minimum
-          20 characters.
-        </span>
-        <JoditEditor
-          ref={editor}
-          value={content}
-          tabIndex={1}
-          config={joditConfig}
-          onBlur={(newContent) => setContent(newContent)}
-          onChange={(newContent) => {}}
-          name={"content"}
-        />
-      </div>
+      <TextInput
+        type={"file"}
+        htmlFor={"photo"}
+        id={"photo"}
+        labelTitle={"photo"}
+        name={"photo"}
+      />
+
+      <TextEditor value={value} setValue={setValue} />
 
       <TextInput
         type={"text"}

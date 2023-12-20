@@ -83,7 +83,13 @@ export const TextInput = ({
         {labelTitle}
       </label>
       <span className="block">{paragraph}</span>
-      <input type={type} id={id} name={name} required className="w-full" />
+      <input
+        type={type}
+        id={id}
+        name={name}
+        required
+        className="w-full outline-none focus:ring-1 ring-green-500"
+      />
     </div>
   );
 };
