@@ -11,7 +11,7 @@ const Login = () => {
 
     const formData = { email, password };
 
-    fetch("http://localhost:3001/login", {
+    fetch("http://localhost:5000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

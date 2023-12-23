@@ -30,7 +30,7 @@ const Video = () => {
 
     const newClass = { selectVideo, writeTittle, description, thumbnail, tags };
 
-    fetch("http://localhost:3001/add-video", {
+    fetch("http://localhost:5000/add-video", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

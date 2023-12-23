@@ -16,7 +16,7 @@ const AddBlog = () => {
 
     const newArticle = { title, photo, value, tags };
 
-    fetch("http://localhost:3001/article", {
+    fetch("http://localhost:5000/article", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ const AddBlog = () => {
         htmlFor={"title"}
         id={"title"}
         labelTitle={"Title"}
-        paragraph={
+        placeholder={
           " Introduce the problem and expand on what you put in the title. Minimum 20 characters."
         }
         name={"title"}
@@ -58,7 +58,7 @@ const AddBlog = () => {
         id={"tags"}
         labelTitle={"Tag"}
         name={"tags"}
-        paragraph={"Minimum 5 tags is required"}
+        placeholder={"Minimum 5 tags is required"}
       />
 
       <div className="flex justify-end">

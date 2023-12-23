@@ -73,7 +73,7 @@ export const TextInput = ({
   htmlFor,
   id,
   labelTitle,
-  paragraph,
+  placeholder,
   name,
   type,
 }) => {
@@ -82,13 +82,14 @@ export const TextInput = ({
       <label htmlFor={htmlFor} className="capitalize">
         {labelTitle}
       </label>
-      <span className="block">{paragraph}</span>
+
       <input
         type={type}
         id={id}
         name={name}
         required
-        className="w-full outline-none focus:ring-1 ring-green-500"
+        placeholder={placeholder}
+        className="p-2 w-full outline-none focus:ring-1 ring-green-500"
       />
     </div>
   );

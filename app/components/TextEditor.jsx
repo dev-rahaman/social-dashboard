@@ -30,7 +30,7 @@ export default function TextEditor({ value, setValue }) {
         setValue(quillRef.current.firstChild.innerHTML);
       });
     }
-  }, [quill, quillRef]);
+  }, [quill, quillRef, setValue]);
 
   return (
     <div>

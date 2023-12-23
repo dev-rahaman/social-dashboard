@@ -1,32 +1,37 @@
 "use client";
 import React, { useState, useRef } from "react";
 import { Button, TextInput } from "@/app/components/SmallComponents";
+import TextEditor from "@/app/components/TextEditor";
 
 const Notice = () => {
-  const [content, setContent] = useState("");
+  const [value, setValue] = useState();
 
   const handleNotice = (e) => {
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
-    const content = form.content.value;
+    // const value = form.value.value;
     const principalName = form.principalName.value;
     const schoolPlace = form.schoolPlace.value;
     const schoolSeal = form.schoolSeal.value;
     const noticeDate = form.noticeDate.value;
+    const noticeNo = form.noticeNo.value;
+    const schoolEstablish = form.schoolEstablish.value;
     const tags = form.tags.value;
 
     const newNotice = {
       title,
-      content,
-      principalName,
+      value,
       schoolSeal,
-      schoolPlace,
+      schoolEstablish,
       noticeDate,
+      noticeNo,
+      schoolPlace,
+      principalName,
       tags,
     };
 
-    fetch("http://localhost:3001/add-notice", {
+    fetch("http://localhost:5000/notice", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,18 +52,12 @@ const Notice = () => {
         id={"title"}
         labelTitle={"title"}
         name={"title"}
-        paragraph={
+        placeholder={
           " Introduce the problem and expand on what you put in the title. Minimum 20 characters."
         }
       />
 
-      <div className="bg-gray-200 p-5 rounded w-[900px]">
-        <label htmlFor="Content">Content</label>
-        <span className="block">
-          Introduce the problem and expand on what you put in the title. Minimum
-          20 characters.
-        </span>
-      </div>
+      <TextEditor value={value} setValue={setValue} />
 
       <TextInput
         type={"text"}
@@ -66,7 +65,7 @@ const Notice = () => {
         id={"principalName"}
         labelTitle={"principal Name"}
         name={"principalName"}
-        paragraph={"Enter Principal's Name here."}
+        placeholder={"Enter Principal's Name here."}
       />
       <TextInput
         type={"text"}
@@ -74,7 +73,7 @@ const Notice = () => {
         id={"schoolPlace"}
         labelTitle={"school Place"}
         name={"schoolPlace"}
-        paragraph={"Enter school Place here."}
+        placeholder={"Enter school Place here."}
       />
       <TextInput
         type={"file"}
@@ -82,15 +81,31 @@ const Notice = () => {
         id={"schoolSeal"}
         labelTitle={"school Seal"}
         name={"schoolSeal"}
-        paragraph={"Enter School Seal here."}
+        placeholder={"Enter School Seal here."}
       />
       <TextInput
         type={"text"}
-        htmlFor={"schoolPlace"}
-        id={"schoolPlace"}
-        labelTitle={"school Place"}
-        name={"schoolPlace"}
-        paragraph={"Enter School Place here."}
+        htmlFor={"schoolEstablish"}
+        id={"schoolEstablish"}
+        labelTitle={"School Establish"}
+        name={"schoolEstablish"}
+        placeholder={"Enter School School Establish Date"}
+      />
+      <TextInput
+        type={"text"}
+        htmlFor={"schoolWebsite"}
+        id={"schoolWebsite"}
+        labelTitle={"school Website"}
+        name={"schoolWebsite"}
+        placeholder={"Enter School School Website Link"}
+      />
+      <TextInput
+        type={"text"}
+        htmlFor={"noticeNo"}
+        id={"noticeNo"}
+        labelTitle={"notice No:"}
+        name={"noticeNo"}
+        placeholder={"Enter notice No ex: 45"}
       />
       <TextInput
         type={"date"}
@@ -98,7 +113,7 @@ const Notice = () => {
         id={"noticeDate"}
         labelTitle={"notice Date"}
         name={"noticeDate"}
-        paragraph={"Minimum 5 tags is required"}
+        placeholder={"Minimum 5 tags is required"}
       />
       <TextInput
         type={"text"}
@@ -106,7 +121,7 @@ const Notice = () => {
         id={"tags"}
         labelTitle={"tags"}
         name={"tags"}
-        paragraph={"Minimum 5 tags is required"}
+        placeholder={"Minimum 5 tags is required"}
       />
       <div className="flex justify-end">
         <Button type={"submit"} buttonText={"Post Now"} />

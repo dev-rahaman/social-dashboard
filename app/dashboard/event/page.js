@@ -14,7 +14,7 @@ const Class = () => {
 
     const newClass = { selectVideo, writeTittle, description, thumbnail, tags };
 
-    fetch("http://localhost:3001/add-event", {
+    fetch("http://localhost:5000/add-event", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -79,15 +79,6 @@ const Class = () => {
         name={"tags"}
         paragraph={"Minimum 5 tags is required"}
       />
-      {/* playlist */}
-      <select>
-        <option>Select a playlist</option>
-        <option>name1</option>
-        <option>name2</option>
-        <option>name3</option>
-        <option>name4</option>
-        <option>name5</option>
-      </select>
       <div className="flex justify-end">
         <Button type={"submit"} buttonText={"Post Now"} />
       </div>

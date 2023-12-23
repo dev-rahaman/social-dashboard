@@ -37,7 +37,7 @@ const Registration = () => {
     // setError("");
     const newUser = { firstName, lastName, email, password };
 
-    fetch("http://localhost:3001/registration", {
+    fetch("http://localhost:5000/registration", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

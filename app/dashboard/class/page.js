@@ -14,7 +14,7 @@ const Class = () => {
 
     const newClass = { selectVideo, writeTittle, description, thumbnail, tags };
 
-    fetch("http://localhost:3001/add-class", {
+    fetch("http://localhost:5000/add-class", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

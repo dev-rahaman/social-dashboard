@@ -12,7 +12,7 @@ const Photo = () => {
 
     const newPhoto = { photo, description, tags };
 
-    fetch("http://localhost:3001/add-photo", {
+    fetch("http://localhost:5000/add-photo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
