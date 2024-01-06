@@ -28,9 +28,16 @@ const Video = () => {
     const thumbnail = form.thumbnail.value;
     const tags = form.tags.value;
 
-    const newClass = { selectVideo, writeTittle, description, thumbnail, tags };
+    const newClass = {
+      selectVideo,
+      writeTittle,
+      description,
+      thumbnail,
+      videoView: "0",
+      tags,
+    };
 
-    fetch("http://localhost:5000/add-video", {
+    fetch("http://localhost:5000/video", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
